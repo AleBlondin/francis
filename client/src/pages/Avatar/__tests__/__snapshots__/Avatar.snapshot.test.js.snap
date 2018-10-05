@@ -22,7 +22,6 @@ exports[`The page component should render correctly 1`] = `
     <input
       className="github-avatar-input"
       onChange={[Function]}
-      placeholder={undefined}
       type="text"
     />
   </p>
