@@ -1,36 +1,29 @@
+// @flow
 import React from 'react';
-import ReactDom from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { reducer as form } from 'redux-form';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
-import * as serviceWorker from './serviceWorker';
-// Import your reducers and routes here
-import Welcome from './Welcome';
 
-const store = createStore(
-  combineReducers({routing, form, /* Add your reducers here */}),
-  applyMiddleware(thunk),
-);
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import configureStore from './redux/store';
 
-const history = syncHistoryWithStore(createBrowserHistory(), store);
+const history = createBrowserHistory();
+const store = configureStore(history);
 
-ReactDom.render(
-  <Provider store={store}>
-    <Router history={history}>
-      <Switch>
-        <Route path="/" component={Welcome} strict={true} exact={true}/>
-        {/* Add your routes here */}
-        <Route render={() => <h1>Not Found</h1>}/>
-      </Switch>
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
+const rootEl = document.getElementById('root');
 
-serviceWorker.unregister();
+if (rootEl) {
+  ReactDOM.render(<App history={history} store={store} />, rootEl);
+  registerServiceWorker();
+}
+
+// $FlowFixMe
+if (module.hot) {
+  // $FlowFixMe
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default; // eslint-disable-line
+    if (rootEl) {
+      ReactDOM.render(<NextApp history={history} store={store} />, rootEl);
+    }
+  });
+}
