@@ -1,0 +1,52 @@
+defaults: &defaults
+  docker:
+  - image: circleci/node:10.11.0
+
+version: 2
+jobs:
+  npm-install:
+    <<: *defaults
+    working_directory: ~/project
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project/client
+      - restore_cache:
+          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+      - run:
+          working_directory: client
+          name: Install front dependencies
+          command: npm install
+      - save_cache:
+          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+          paths:
+            - client/node_modules
+      - persist_to_workspace:
+          root: ~/project/client
+          paths:
+            - node_modules
+
+  frontend-tests:
+    <<: *defaults
+    working_directory: ~/project
+    environment:
+      NODE_ENV: test
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project/client
+      - run:
+          working_directory: client
+          name: Unit test with coverage
+          command: npm run test:coverage
+      - store_artifacts:
+          path: client/coverage
+
+workflows:
+  version: 2
+  frontend:
+    jobs:
+      - npm-install
+      - frontend-tests:
+          requires:
+            - npm-install
