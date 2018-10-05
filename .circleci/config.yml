@@ -6,38 +6,41 @@ version: 2
 jobs:
   npm-install:
     <<: *defaults
-    working_directory: ~/repo/client
+    working_directory: ~/project
     steps:
-      - attach_workspace:
-          at: ~
       - checkout
+      - attach_workspace:
+          at: ~/project/client
       - restore_cache:
-          key: node-modules-cache-{{ checksum "package-lock.json" }}
+          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
       - run:
+          working_directory: client
           name: Install front dependencies
           command: npm install
       - save_cache:
-          key: node-modules-cache-{{ checksum "package-lock.json" }}
+          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+          paths:
+            - client/node_modules
+      - persist_to_workspace:
+          root: ~/project/client
           paths:
             - node_modules
-      - persist_to_workspace:
-          root: ~
-          paths:
-            - repo
 
   frontend-tests:
     <<: *defaults
-    working_directory: ~/repo/client
+    working_directory: ~/project
     environment:
       NODE_ENV: test
     steps:
+      - checkout
       - attach_workspace:
-          at: ~
+          at: ~/project/client
       - run:
+          working_directory: client
           name: Unit test with coverage
           command: npm run test:coverage
       - store_artifacts:
-          path: coverage
+          path: client/coverage
 
 workflows:
   version: 2
