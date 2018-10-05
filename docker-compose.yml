@@ -92,7 +92,6 @@ services:
       context: ./h2-proxy
     depends_on:
       - client
-      - admin
       - api
       - cache-proxy
     ports:
