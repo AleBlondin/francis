@@ -1,5 +1,4 @@
 defaults: &defaults
-  working_directory: ~/repo
   docker:
   - image: circleci/node:10.11.0
 
@@ -7,6 +6,7 @@ version: 2
 jobs:
   npm-install:
     <<: *defaults
+    working_directory: ~/repo/client
     steps:
       - attach_workspace:
           at: ~
@@ -27,6 +27,7 @@ jobs:
 
   frontend-tests:
     <<: *defaults
+    working_directory: ~/repo/client
     environment:
       NODE_ENV: test
     steps:
