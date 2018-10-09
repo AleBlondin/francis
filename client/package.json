@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "connected-react-router": "^4.5.0",
     "env-cmd": "^8.0.2",
     "history": "^4.7.2",
