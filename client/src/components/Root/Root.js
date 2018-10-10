@@ -3,6 +3,7 @@ import React from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import fr from 'react-intl/locale-data/fr';
 import en from 'react-intl/locale-data/en';
+import Typography from '@material-ui/core/Typography';
 
 import frMessages from 'translations/fr.json';
 import enMessages from 'translations/en.json';
@@ -29,7 +30,9 @@ export default class Root extends React.Component<Props> {
         <StyledRoot>
           <div className="header">
             <img src={logo} className="logo" alt="logo" />
-            <h2>Welcome to React</h2>
+            <Typography variant="h2" color="primary">
+              Welcome to React
+            </Typography>
           </div>
           {children}
         </StyledRoot>

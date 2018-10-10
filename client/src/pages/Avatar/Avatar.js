@@ -3,8 +3,11 @@ import * as React from 'react';
 import type { Dispatch } from 'redux';
 import { FormattedMessage } from 'react-intl';
 import type { IntlShape } from 'react-intl';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
-import StyledAvatar from './Avatar.style';
+import { Content, Container } from './Avatar.style';
 
 type Props = {
   fetchUser: (username: string) => void,
@@ -36,28 +39,30 @@ class Avatar extends React.Component<Props> {
     const { formatMessage } = intl;
 
     return (
-      <StyledAvatar>
-        <button tabIndex={0} type="button" onClick={this.navigateTo('/')}>
-          <FormattedMessage id="page.back" />
-        </button>
-        <p>
-          <FormattedMessage id="page.api-to-translate-example" />
-        </p>
-        <p>
-          <input
-            className="github-avatar-input"
+      <Container>
+        <Content>
+          <Button tabIndex={0} onClick={this.navigateTo('/')} variant="contained" color="primary">
+            <FormattedMessage id="page.back" />
+          </Button>
+          <Typography variant="body2">
+            <FormattedMessage id="page.api-to-translate-example" />
+          </Typography>
+          <br />
+          <TextField
+            fullWidth
+            id="github-avatar-input"
+            label={formatMessage({ id: 'page.add-github-username' })}
             type="text"
+            margin="normal"
             onChange={this.onInputChange}
-            placeholder={formatMessage({ id: 'page.add-github-username' })}
           />
-        </p>
-        <p>
-          <button onClick={this.fetchUser} type="button">
+          <br />
+          <Button onClick={this.fetchUser} variant="contained" color="primary">
             <FormattedMessage id="page.fetch-github-avatar" />
-          </button>
-        </p>
-        {userAvatarUrl && <img src={userAvatarUrl} alt="user avatar" />}
-      </StyledAvatar>
+          </Button>
+          {userAvatarUrl && <img src={userAvatarUrl} alt="user avatar" />}
+        </Content>
+      </Container>
     );
   }
 }
