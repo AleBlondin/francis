@@ -20,7 +20,7 @@ exports[`<Root> should render correctly 1`] = `
     }
   }
 >
-  <styled.div>
+  <Rootstyle__StyledRoot>
     <div
       className="header"
     >
@@ -38,6 +38,6 @@ exports[`<Root> should render correctly 1`] = `
         test
       </span>
     </div>
-  </styled.div>
+  </Rootstyle__StyledRoot>
 </IntlProvider>
 `;

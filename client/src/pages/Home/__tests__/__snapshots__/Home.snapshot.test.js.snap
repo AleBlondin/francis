@@ -2,7 +2,7 @@
 
 exports[`<Home> should render correctly 1`] = `
 <Fragment>
-  <styled.div>
+  <Homestyle__StyledIntro>
     <p>
       <FormattedMessage
         defaultMessage="To get started, edit"
@@ -58,6 +58,6 @@ exports[`<Home> should render correctly 1`] = `
         values={Object {}}
       />
     </Link>
-  </styled.div>
+  </Homestyle__StyledIntro>
 </Fragment>
 `;

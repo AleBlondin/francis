@@ -2,7 +2,7 @@
 
 exports[`The page component should render correctly 1`] = `
 <div
-  className="sc-bdVaJa hiBQnU"
+  className="Avatarstyle__StyledAvatar-vc2bed-0 ghtClO"
 >
   <button
     onClick={[Function]}
