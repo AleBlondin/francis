@@ -1,5 +1,4 @@
 [ignore]
-.*/node_modules/*
 
 [include]
 
@@ -12,4 +11,4 @@ flow-typed
 module.name_mapper='^\(\/?.*\)$' -> '<PROJECT_ROOT>/src/\1'
 
 [version]
-0.80.0
+0.82.0
