@@ -4,8 +4,10 @@ import { type Store } from 'redux';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import type { BrowserHistory } from 'history/createBrowserHistory';
 
+import theme from 'theme';
 import Routes from './routes';
 import { Root } from './components';
 
@@ -26,9 +28,11 @@ class App extends React.Component<Props> {
 
     return (
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Route path="/" component={RootComponentWithRoutes} />
-        </ConnectedRouter>
+        <MuiThemeProvider theme={theme}>
+          <ConnectedRouter history={history}>
+            <Route path="/" component={RootComponentWithRoutes} />
+          </ConnectedRouter>
+        </MuiThemeProvider>
       </Provider>
     );
   }
