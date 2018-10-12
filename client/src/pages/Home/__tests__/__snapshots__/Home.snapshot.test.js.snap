@@ -3,7 +3,10 @@
 exports[`<Home> should render correctly 1`] = `
 <Fragment>
   <Homestyle__StyledIntro>
-    <p>
+    <WithStyles(Typography)
+      gutterBottom={true}
+      variant="subtitle1"
+    >
       <FormattedMessage
         defaultMessage="To get started, edit"
         id="home.get-started"
@@ -18,14 +21,18 @@ exports[`<Home> should render correctly 1`] = `
         id="home.save-to-reload"
         values={Object {}}
       />
-    </p>
-    <p>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
       <FormattedMessage
         id="home.create-route"
         values={Object {}}
       />
-    </p>
-    <p>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
       <FormattedMessage
         id="home.generate-component"
         values={Object {}}
@@ -35,28 +42,37 @@ exports[`<Home> should render correctly 1`] = `
       >
         yarn generate
       </code>
-    </p>
-    <p>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
       <FormattedMessage
         id="home.generate-module"
         values={Object {}}
       />
-    </p>
-    <p>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
       <FormattedMessage
         id="home.readme"
         values={Object {}}
       />
-    </p>
+    </WithStyles(Typography)>
     <Link
       href="/avatar"
       replace={false}
       to="/avatar"
     >
-      <FormattedMessage
-        id="home.use-a-link"
-        values={Object {}}
-      />
+      <WithStyles(Button)
+        color="primary"
+        variant="contained"
+      >
+        <FormattedMessage
+          id="home.use-a-link"
+          values={Object {}}
+        />
+      </WithStyles(Button)>
     </Link>
   </Homestyle__StyledIntro>
 </Fragment>

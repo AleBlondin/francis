@@ -29,9 +29,12 @@ exports[`<Root> should render correctly 1`] = `
         className="logo"
         src="logo.svg"
       />
-      <h2>
+      <WithStyles(Typography)
+        color="primary"
+        variant="h2"
+      >
         Welcome to React
-      </h2>
+      </WithStyles(Typography)>
     </div>
     <div>
       <span>
