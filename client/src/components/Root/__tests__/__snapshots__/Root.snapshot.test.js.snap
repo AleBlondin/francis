@@ -27,13 +27,13 @@ exports[`<Root> should render correctly 1`] = `
       <img
         alt="logo"
         className="logo"
-        src="logo.svg"
+        src="pudding.png"
       />
       <WithStyles(Typography)
         color="primary"
         variant="h2"
       >
-        Welcome to React
+        Welcome to Francis
       </WithStyles(Typography)>
     </div>
     <div>

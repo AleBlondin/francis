@@ -7,6 +7,7 @@ import toJson from 'enzyme-to-json';
 import intlShape from '__mocks__/intlShape';
 import Avatar from '../Avatar';
 
+// @flow
 describe('<Avatar />', () => {
   let wrapper = {
     find: jest.fn(),

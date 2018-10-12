@@ -1,16 +1,20 @@
+// @flow
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
+
+import historyMock from '__mocks__/history';
 import App from '../App';
 
 describe('<App>', () => {
   it('should render correctly', () => {
     const props = {
-      history: {},
+      history: historyMock,
       store: {
-        subscribe: () => {},
-        dispatch: () => {},
-        getState: () => {},
+        subscribe: jest.fn(),
+        dispatch: jest.fn(),
+        getState: jest.fn(),
+        replaceReducer: jest.fn(),
       },
     };
 
@@ -21,11 +25,12 @@ describe('<App>', () => {
   describe('<Route>', () => {
     it('should render the Root component', () => {
       const props = {
-        history: {},
+        history: historyMock,
         store: {
-          subscribe: () => {},
-          dispatch: () => {},
-          getState: () => {},
+          subscribe: jest.fn(),
+          dispatch: jest.fn(),
+          getState: jest.fn(),
+          replaceReducer: jest.fn(),
         },
       };
 

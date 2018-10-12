@@ -1,3 +1,4 @@
+// @flow
 import reducer from '../reducer';
 import { UPDATE_USERNAME, USER_FETCH_SUCCESS } from '../constant';
 
@@ -8,6 +9,7 @@ describe('[Reducer] Avatar reducer', () => {
   };
 
   it('should return the inital state when passing no state', () => {
+    // $FlowFixMe
     const state = reducer(undefined, { type: 'FAKE_TYPE' });
     expect(state).toEqual({
       userAvatarUrl: null,

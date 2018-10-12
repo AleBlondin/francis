@@ -12,7 +12,7 @@ const mapStateToProps = (state: State): AvatarState => ({
   userAvatarUrl: state.avatar.userAvatarUrl,
 });
 
-const mapDispatchToProps = (dispatch: any): Object => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>): Object => ({
   fetchUser: (username: string): Dispatch<FetchUserRequestActionType> =>
     dispatch(actions.fetchUserRequest(username)),
   push: (pathName: string): Dispatch<*> => dispatch(push(pathName)),
