@@ -44,7 +44,7 @@ class Avatar extends React.Component<Props> {
           <Button tabIndex={0} onClick={this.navigateTo('/')} variant="contained" color="primary">
             <FormattedMessage id="page.back" />
           </Button>
-          <Typography variant="body2">
+          <Typography variant="body1">
             <FormattedMessage id="page.api-to-translate-example" />
           </Typography>
           <br />

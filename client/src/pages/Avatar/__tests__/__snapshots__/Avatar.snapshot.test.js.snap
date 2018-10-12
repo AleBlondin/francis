@@ -2,42 +2,100 @@
 
 exports[`The page component should render correctly 1`] = `
 <div
-  className="Avatarstyle__StyledAvatar-vc2bed-0 ghtClO"
+  className="Avatarstyle__Container-vc2bed-0 fWkIzP"
 >
-  <button
-    onClick={[Function]}
-    tabIndex={0}
-    type="button"
+  <div
+    className="Avatarstyle__Content-vc2bed-1 iSRiGY"
   >
-    <span>
-      Retour
-    </span>
-  </button>
-  <p>
-    <span>
-      Ce message est traduit en utilisant directement l'API react-intl
-    </span>
-  </p>
-  <p>
-    <input
-      className="github-avatar-input"
-      onChange={[Function]}
-      type="text"
-    />
-  </p>
-  <p>
     <button
+      className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16"
+      disabled={false}
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
       type="button"
     >
-      <span>
-        Affiche l'avatar github
+      <span
+        className="MuiButton-label-2"
+      >
+        <span>
+          Retour
+        </span>
       </span>
+      <span
+        className="MuiTouchRipple-root-30"
+      />
     </button>
-  </p>
-  <img
-    alt="user avatar"
-    src="https://avatars1.githubusercontent.com/u/9215726?v=4"
-  />
+    <p
+      className="MuiTypography-root-37 MuiTypography-body1-46"
+    >
+      <span>
+        Ce message est traduit en utilisant directement l'API react-intl
+      </span>
+    </p>
+    <br />
+    <div
+      className="MuiFormControl-root-72 MuiFormControl-marginNormal-73 MuiFormControl-fullWidth-75"
+    >
+      <div
+        className="MuiInputBase-root-89 MuiInput-root-76 MuiInput-underline-80 MuiInputBase-fullWidth-98 MuiInput-fullWidth-83 MuiInputBase-formControl-90 MuiInput-formControl-77"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input-99 MuiInput-input-84"
+          disabled={false}
+          id="github-avatar-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="text"
+        />
+      </div>
+    </div>
+    <br />
+    <button
+      className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-2"
+      >
+        <span>
+          Affiche l'avatar github
+        </span>
+      </span>
+      <span
+        className="MuiTouchRipple-root-30"
+      />
+    </button>
+    <img
+      alt="user avatar"
+      src="https://avatars1.githubusercontent.com/u/9215726?v=4"
+    />
+  </div>
 </div>
 `;

@@ -1,5 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import toJson from 'enzyme-to-json';
 
 import intlShape from '__mocks__/intlShape';
 import Avatar from '../Avatar';
@@ -29,13 +32,13 @@ describe('<Avatar />', () => {
     });
 
     it('should call onInputChange when writing in the text input', () => {
-      const input = wrapper.find('input');
+      const input = wrapper.find(TextField);
       // $FlowFixMe
       expect(input.prop('onChange')).toBe(wrapper.instance().onInputChange);
     });
 
     it('should call fetchUser when clicking on button', () => {
-      const button = wrapper.find('button').last();
+      const button = wrapper.find(Button).last();
       // $FlowFixMe
       expect(button.prop('onClick')).toBe(wrapper.instance().fetchUser);
     });
