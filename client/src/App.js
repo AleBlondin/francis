@@ -2,6 +2,7 @@
 import React from 'react';
 import { type Store } from 'redux';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -13,6 +14,7 @@ import { Root } from './components';
 
 type Props = {
   history: BrowserHistory,
+  persistor: Object,
   store: Store<State, *, *>,
 };
 
@@ -29,9 +31,11 @@ class App extends React.Component<Props> {
     return (
       <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-          <ConnectedRouter history={history}>
-            <Route path="/" component={RootComponentWithRoutes} />
-          </ConnectedRouter>
+          <PersistGate loading={null} persistor={this.props.persistor}>
+            <ConnectedRouter history={history}>
+              <Route path="/" component={RootComponentWithRoutes} />
+            </ConnectedRouter>
+          </PersistGate>
         </MuiThemeProvider>
       </Provider>
     );

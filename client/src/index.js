@@ -9,12 +9,12 @@ import { register } from './serviceWorker';
 import configureStore from './redux/store';
 
 const history = createBrowserHistory();
-const store = configureStore(history);
+const { store, persistor } = configureStore(history);
 
 const rootEl = document.getElementById('root');
 
 if (rootEl) {
-  ReactDOM.render(<App history={history} store={store} />, rootEl);
+  ReactDOM.render(<App history={history} store={store} persistor={persistor} />, rootEl);
   register();
 }
 

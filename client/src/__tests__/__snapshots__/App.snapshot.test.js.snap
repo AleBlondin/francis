@@ -395,27 +395,31 @@ exports[`<App> should render correctly 1`] = `
       }
     }
   >
-    <Connect(ConnectedRouter)
-      history={
-        Object {
-          "action": [MockFunction],
-          "block": [MockFunction],
-          "go": [MockFunction],
-          "goBack": [MockFunction],
-          "goForward": [MockFunction],
-          "length": [MockFunction],
-          "listen": [MockFunction],
-          "location": [MockFunction],
-          "push": [MockFunction],
-          "replace": [MockFunction],
-        }
-      }
+    <PersistGate
+      loading={null}
     >
-      <Route
-        component={[Function]}
-        path="/"
-      />
-    </Connect(ConnectedRouter)>
+      <Connect(ConnectedRouter)
+        history={
+          Object {
+            "action": [MockFunction],
+            "block": [MockFunction],
+            "go": [MockFunction],
+            "goBack": [MockFunction],
+            "goForward": [MockFunction],
+            "length": [MockFunction],
+            "listen": [MockFunction],
+            "location": [MockFunction],
+            "push": [MockFunction],
+            "replace": [MockFunction],
+          }
+        }
+      >
+        <Route
+          component={[Function]}
+          path="/"
+        />
+      </Connect(ConnectedRouter)>
+    </PersistGate>
   </MuiThemeProvider>
 </Provider>
 `;

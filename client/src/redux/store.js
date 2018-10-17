@@ -1,5 +1,8 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import createSagaMiddleware from 'redux-saga';
 
 import createReducer from './reducers';
@@ -22,8 +25,16 @@ export default function configureStore(history) {
       : compose;
   /* eslint-enable */
 
+  const rootReducer = createReducer();
+  const persistConfig = {
+    key: 'root',
+    whitelist: ['login'],
+    storage,
+  };
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
   const store = createStore(
-    connectRouter(history)(createReducer()),
+    connectRouter(history)(persistedReducer),
     initialState,
     composeEnhancers(...enhancers),
   );
@@ -31,6 +42,8 @@ export default function configureStore(history) {
   sagaMiddleware.run(rootSaga);
   store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {};
+
+  const persistor = persistStore(store);
 
   /* istanbul ignore next */
   if (module.hot) {
@@ -44,5 +57,5 @@ export default function configureStore(history) {
     });
   }
 
-  return store;
+  return { store, persistor };
 }
