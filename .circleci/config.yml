@@ -1,11 +1,15 @@
-defaults: &defaults
+defaults-frontend: &defaults-frontend
   docker:
   - image: circleci/node:10.11.0
+
+defaults-backend: &defaults-backend
+    docker:
+    - image: chialab/php:7.2
 
 version: 2
 jobs:
   npm-install:
-    <<: *defaults
+    <<: *defaults-frontend
     working_directory: ~/project
     steps:
       - checkout
@@ -27,7 +31,7 @@ jobs:
             - node_modules
 
   frontend-tests:
-    <<: *defaults
+    <<: *defaults-frontend
     working_directory: ~/project
     environment:
       NODE_ENV: test
@@ -41,6 +45,47 @@ jobs:
           command: npm run test:coverage
       - store_artifacts:
           path: client/coverage
+          
+  composer-install:
+    <<: *defaults-backend
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - attach_workspace:
+          at: ~/repo/api
+    - restore_cache:
+          key: composer-cache-{{ checksum "api/composer.lock" }}
+    - run:
+          working_directory: api
+          name: Copy env file
+          command: cp .env.dist .env
+    - run:
+          working_directory: api
+          name: Install composer dependencies
+          command: composer install -n --prefer-dist
+    - save_cache:
+          key: composer-cache-{{ checksum "api/composer.lock" }}
+          paths:
+          - api/vendor
+    - persist_to_workspace:
+          root: ~/repo/api
+          paths:
+          - vendor
+          - .env
+
+  backend-static-tests:
+      <<: *defaults-backend
+      working_directory: ~/repo
+      steps:
+      - checkout
+      - attach_workspace:
+            at: ~/repo/api
+      - restore_cache:
+            key: composer-cache-{{ checksum "api/composer.lock" }}
+      - run:
+            working_directory: api
+            name: Run static analysis
+            command: ./vendor/bin/phpstan analyse src
 
 workflows:
   version: 2
@@ -50,3 +95,9 @@ workflows:
       - frontend-tests:
           requires:
             - npm-install
+  backend:
+    jobs:
+      - composer-install
+      - backend-static-tests:
+          requires:
+            - composer-install
