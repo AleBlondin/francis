@@ -32,11 +32,11 @@ exports[`The page component should render correctly 1`] = `
         </span>
       </span>
       <span
-        className="MuiTouchRipple-root-30"
+        className="MuiTouchRipple-root-99"
       />
     </button>
     <p
-      className="MuiTypography-root-37 MuiTypography-body1-46"
+      className="MuiTypography-root-30 MuiTypography-body1-39"
     >
       <span>
         Ce message est traduit en utilisant directement l'API react-intl
@@ -44,15 +44,15 @@ exports[`The page component should render correctly 1`] = `
     </p>
     <br />
     <div
-      className="MuiFormControl-root-72 MuiFormControl-marginNormal-73 MuiFormControl-fullWidth-75"
+      className="MuiFormControl-root-65 MuiFormControl-marginNormal-66 MuiFormControl-fullWidth-68"
     >
       <div
-        className="MuiInputBase-root-89 MuiInput-root-76 MuiInput-underline-80 MuiInputBase-fullWidth-98 MuiInput-fullWidth-83 MuiInputBase-formControl-90 MuiInput-formControl-77"
+        className="MuiInputBase-root-82 MuiInput-root-69 MuiInput-underline-73 MuiInputBase-fullWidth-91 MuiInput-fullWidth-76 MuiInputBase-formControl-83 MuiInput-formControl-70"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
-          className="MuiInputBase-input-99 MuiInput-input-84"
+          className="MuiInputBase-input-92 MuiInput-input-77"
           disabled={false}
           id="github-avatar-input"
           onBlur={[Function]}
@@ -89,7 +89,7 @@ exports[`The page component should render correctly 1`] = `
         </span>
       </span>
       <span
-        className="MuiTouchRipple-root-30"
+        className="MuiTouchRipple-root-99"
       />
     </button>
     <img
