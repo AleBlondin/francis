@@ -12,11 +12,18 @@ exports[`<Home> should render correctly 1`] = `
         id="home.get-started"
         values={Object {}}
       />
-      <code
-        className="intro-code"
-      >
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="caption"
+    >
+      <code>
         src/App.js
       </code>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      gutterBottom={true}
+      variant="subtitle1"
+    >
       <FormattedMessage
         id="home.save-to-reload"
         values={Object {}}
@@ -37,9 +44,11 @@ exports[`<Home> should render correctly 1`] = `
         id="home.generate-component"
         values={Object {}}
       />
-      <code
-        className="intro-code"
-      >
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="caption"
+    >
+      <code>
         yarn generate
       </code>
     </WithStyles(Typography)>
@@ -59,9 +68,8 @@ exports[`<Home> should render correctly 1`] = `
         values={Object {}}
       />
     </WithStyles(Typography)>
-    <Link
+    <Homestyle__StyledLink
       href="/avatar"
-      replace={false}
       to="/avatar"
     >
       <WithStyles(Button)
@@ -73,7 +81,7 @@ exports[`<Home> should render correctly 1`] = `
           values={Object {}}
         />
       </WithStyles(Button)>
-    </Link>
+    </Homestyle__StyledLink>
   </Homestyle__StyledIntro>
 </Fragment>
 `;
