@@ -1,15 +1,18 @@
 {
-  "excludeGlob": [
+  "globExcludePatterns": [
     "node_modules/**",
     "src/setupTests.js",
+    "src/theme.js",
+    "src/index.js",
+    "src/redux/store.js",
     "src/__mocks__/**",
     "src/**/*.style.js",
-    "src/registerServiceWorker.js"
+    "src/serviceWorker.js"
   ],
   "flowCommandPath": "node_modules/.bin/flow",
-  "includeGlob": [
+  "globIncludePatterns": [
     "src/**/*.js"
   ],
   "threshold": 85,
-  "type": "html"
+  "reportTypes": "html"
 }

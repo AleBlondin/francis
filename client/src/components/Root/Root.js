@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import frMessages from 'translations/fr.json';
 import enMessages from 'translations/en.json';
 import { flattenMessages } from 'services/i18n/intl';
-import logo from './logo.svg';
+import logo from './pudding.png';
 import StyledRoot from './Root.style';
 
 const locales = {
@@ -31,7 +31,7 @@ export default class Root extends React.Component<Props> {
           <div className="header">
             <img src={logo} className="logo" alt="logo" />
             <Typography variant="h2" color="primary">
-              Welcome to React
+              Welcome to Francis
             </Typography>
           </div>
           {children}

@@ -1,7 +1,7 @@
 // @flow
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import { type Dispatch } from 'redux';
+import type { Dispatch, Action } from 'react-redux';
 import { injectIntl } from 'react-intl';
 
 import { actions } from 'redux/Avatar';
@@ -12,7 +12,7 @@ const mapStateToProps = (state: State): AvatarState => ({
   userAvatarUrl: state.avatar.userAvatarUrl,
 });
 
-const mapDispatchToProps = (dispatch: any): Object => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): Object => ({
   fetchUser: (username: string): Dispatch<FetchUserRequestActionType> =>
     dispatch(actions.fetchUserRequest(username)),
   push: (pathName: string): Dispatch<*> => dispatch(push(pathName)),
