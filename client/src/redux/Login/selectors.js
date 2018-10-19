@@ -1,3 +1,3 @@
 // @flow
-export const getUserToken = (store: Store) => store.login.token;
-export const getLoginError = (store: Store) => store.login.loginError;
+export const getUserToken = (store: State): ?string => store.login.token;
+export const getLoginError = (store: State) => store.login.loginError;

@@ -1,4 +1,3 @@
-// @flow
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,9 +17,7 @@ if (rootEl) {
   register();
 }
 
-// $FlowFixMe
 if (module.hot) {
-  // $FlowFixMe
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default; // eslint-disable-line
     if (rootEl) {

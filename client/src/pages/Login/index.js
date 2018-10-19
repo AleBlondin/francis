@@ -1,2 +1,2 @@
 // @flow
-export { default } from "./Login.wrap";
+export { default } from './Login.wrap';

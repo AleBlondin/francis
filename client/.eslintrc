@@ -43,20 +43,21 @@
         "jsxBracketSameLine": false
       }
     ],
-    "mysticatea/no-useless-rest-spread": "error",
-    "prefer-object-spread/prefer-object-spread": 2,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": 0,
-    "react/require-default-props": 0,
-    "react/prop-types": 0,
-    "react/no-array-index-key": 2,
-    "import/prefer-default-export": 0,
+    "flowtype/define-flow-type": 1,
+    "flowtype/delimiter-dangle": [1, "always-multiline"],
+    "flowtype/semi": [1, "always"],
+    "flowtype/use-flow-type": 1,
+    "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
-    "import/extensions": 0,
-    "flowtype/define-flow-type": 1,
-    "flowtype/use-flow-type": 1,
-    "flowtype/delimiter-dangle": [1, "always-multiline"],
-    "flowtype/semi": [1, "always"]
+    "import/prefer-default-export": 0,
+    "mysticatea/no-useless-rest-spread": "error",
+    "prefer-object-spread/prefer-object-spread": 2,
+    "react/destructuring-assignment": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-array-index-key": 2,
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 0,
+    "react/require-default-props": 0
   }
 }

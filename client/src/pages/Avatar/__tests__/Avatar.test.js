@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import toJson from 'enzyme-to-json';
 
 import intlShape from '__mocks__/intlShape';
 import Avatar from '../Avatar';

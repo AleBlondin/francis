@@ -12,7 +12,7 @@ export function loginUserRequest(payload: Object): LoginUserRequestAction {
 export function loginUserSuccess(token: string): LoginUserSuccessAction {
   return {
     type: USER_LOGIN_SUCCESS,
-    payload: token,
+    payload: { token },
   };
 }
 

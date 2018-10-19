@@ -1,19 +1,19 @@
 // @flow
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { getLoginError } from "redux/Login";
-import { loginUserRequest } from "redux/Login/actions";
-import LoginFormContainer from "./Login";
+import { getLoginError } from 'redux/Login';
+import { loginUserRequest } from 'redux/Login/actions';
+import LoginFormContainer, { type StateProps, type DispatchProps, type FormValues } from './Login';
 
-const mapStateToProps = (state: Store): Object => ({
-  loginError: getLoginError(state)
+const mapStateToProps = (state: State): StateProps => ({
+  loginError: getLoginError(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  login: values => dispatch(loginUserRequest(values))
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
+  login: (values: FormValues) => dispatch(loginUserRequest(values)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LoginFormContainer);

@@ -397,6 +397,7 @@ exports[`<App> should render correctly 1`] = `
   >
     <PersistGate
       loading={null}
+      persistor={Object {}}
     >
       <Connect(ConnectedRouter)
         history={

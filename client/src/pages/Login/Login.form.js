@@ -1,16 +1,19 @@
 // @flow
-import React from "react";
-import { Form, Field } from "formik";
+import React from 'react';
+import { Form, Field } from 'formik';
 
 declare type FormValues = {
-  email: string,
-  password: string
+  email?: ?string,
+  password?: ?string,
 };
 
 type Props = {
   errors: FormValues,
-  touched: FormValues,
-  isSubmitting: boolean
+  touched: {
+    email?: boolean,
+    password?: boolean,
+  },
+  isSubmitting: boolean,
 };
 
 const InnerLoginForm = (props: Props) => {

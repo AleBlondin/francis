@@ -10,6 +10,7 @@ describe('<App>', () => {
   it('should render correctly', () => {
     const props = {
       history: historyMock,
+      persistor: {},
       store: {
         subscribe: jest.fn(),
         dispatch: jest.fn(),
@@ -26,6 +27,7 @@ describe('<App>', () => {
     it('should render the Root component', () => {
       const props = {
         history: historyMock,
+        persistor: {},
         store: {
           subscribe: jest.fn(),
           dispatch: jest.fn(),

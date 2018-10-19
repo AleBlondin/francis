@@ -1,9 +1,13 @@
 [ignore]
+.*/node_modules/redux-persist/lib/integration/react.js.flow
+.*/node_modules/flow-coverage-report/
 
 [include]
 
 [libs]
 flow-typed
+src/redux/Login/types.js
+src/redux/Avatar/types.js
 
 [lints]
 

@@ -6,7 +6,7 @@ const initialState = {
   username: null,
 };
 
-export default function reducer(state: AvatarState = initialState, action: UserAction) {
+export default function reducer(state: AvatarState = initialState, action: AvatarAction) {
   switch (action.type) {
     case UPDATE_USERNAME:
       return {
