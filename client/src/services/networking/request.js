@@ -27,8 +27,7 @@ export const makeLoginRequest = (endpoint: string, data: Object): Promise<*> =>
     .send(`email=${data.email}`)
     .send(`password=${data.password}`);
 
-export const login = async (endpoint: string, data: Object): String => {
+export const login = async (endpoint: string, data: Object): Promise<void> => {
   const response = await makeLoginRequest(endpoint, data);
   localStorage.setItem('token', response.body.token);
-  return response.body.token;
 };
