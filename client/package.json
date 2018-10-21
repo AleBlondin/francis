@@ -49,6 +49,7 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*.test.js",
+      "!src/**/actions.js",
       "!src/**/index.js",
       "!src/**/serviceWorker.js",
       "!src/**/*.wrap.js",
