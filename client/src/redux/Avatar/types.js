@@ -1,8 +1,8 @@
 // @flow
 
 declare type AvatarState = {
-  userAvatarUrl: ?string,
-  username: ?string,
+  userAvatarUrl?: ?string,
+  username?: ?string,
 };
 
 declare type UpdateUsernameAction = {
