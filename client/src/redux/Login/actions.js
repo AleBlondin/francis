@@ -19,7 +19,7 @@ export function loginUserSuccess(token: string): LoginUserSuccessAction {
 export function loginUserError(error: ErrorType): LoginUserErrorAction {
   return {
     type: USER_LOGIN_ERROR,
-    payload: error.message,
+    payload: { errorMessage: error.message },
   };
 }
 

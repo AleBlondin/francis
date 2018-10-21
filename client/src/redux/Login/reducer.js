@@ -13,7 +13,7 @@ export default function reducer(state: LoginState = initialState, action: UserAc
     case USER_LOGIN_ERROR:
       return {
         ...state,
-        loginError: action.payload,
+        loginError: action.payload.errorMessage,
       };
     default:
       return state;
