@@ -1,7 +1,7 @@
 // @flow
 export type FormValues = {
-  email: string,
-  password: string,
+  email?: string,
+  password?: string,
 };
 
 export type StateProps = {
@@ -14,7 +14,7 @@ export type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
-export const validateForm = (values: FormValues) => {
+export const validateForm = (values: FormValues): FormValues => {
   const errors = {};
   if (!values.email) {
     errors.email = 'Email required';
@@ -24,12 +24,12 @@ export const validateForm = (values: FormValues) => {
   return errors;
 };
 
-export const mapPropsToValues = () =>
+export const mapPropsToValues = (): FormValues =>
   ({
     email: '',
     password: '',
   }: FormValues);
 
-export const handleSubmit = () => (values: FormValues, { props }: { props: Props }) => {
+export const handleSubmit = () => (values: FormValues, { props }: { props: Props }): void => {
   props.login(values);
 };
