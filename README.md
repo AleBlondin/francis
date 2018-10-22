@@ -15,5 +15,6 @@ If you have an existing project and want to benefit from the latest Theodo stack
 
 ```bash
 git clone git@github.com:theodo/francis.git
+cd francis
 rm -fr .git
 ```
