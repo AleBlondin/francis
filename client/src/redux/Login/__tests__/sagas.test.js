@@ -1,36 +1,40 @@
 // @flow
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { expectSaga } from 'redux-saga-test-plan';
+import { put, takeEvery } from 'redux-saga/effects';
 
+import { throwError } from 'redux-saga-test-plan/providers';
+import * as matchers from 'redux-saga-test-plan/matchers';
 import { login } from 'services/networking/request';
 import loginUserSaga, { loginUser } from '../sagas';
-import { loginUserRequest, loginUserSuccess, loginUserError } from '../actions';
-import { USER_LOGIN_REQUEST } from '../constant';
+import { loginUserSuccess, loginUserError } from '../actions';
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS } from '../constant';
 
+const loginUserRequest = {
+  type: USER_LOGIN_REQUEST,
+  payload: { email: 'bilbo@culdesac.gnd', password: 'm0ñPr3cieuX' },
+};
 const token = 'OX1dSSVRFX1BPU1QsQ0FOX1JFQURfTkV';
+const endpoint = '/api/login_check';
 
 describe('[Saga] Login redux', () => {
   describe('loginUser', () => {
-    const loginValues = { email: 'bilbo@culdesac.gnd', password: 'm0ñPr3cieuX' };
-    const action = loginUserRequest(loginValues);
-    const endpoint = '/login_check';
     describe('when request is a success', () => {
-      const gen = loginUser(action);
-      it('should call the backend login endpoint', () => {
-        expect(gen.next().value).toEqual(call(login, endpoint, loginValues));
-      });
-
-      it('should call the success action when request is a success', () => {
-        expect(gen.next(token).value).toEqual(put(loginUserSuccess(token)));
+      it('should call the success action when request is a success', async () => {
+        return expectSaga(loginUser, loginUserRequest)
+          .provide([[matchers.call.fn(login), token]])
+          .put(loginUserSuccess(token))
+          .run();
       });
     });
 
     describe('when request fails', () => {
-      const gen = loginUser(action);
-      it('should call the error action', () => {
-        expect(gen.next().value).toEqual(call(login, endpoint, loginValues));
-        expect(gen.throw({ message: 'error' }).value).toEqual(
-          put(loginUserError({ message: 'error' })),
-        );
+      it('should call the error action', async () => {
+        const error = new Error();
+        return expectSaga(loginUser, loginUserRequest)
+          .provide([[matchers.call.fn(login), throwError(error)]])
+          .put(loginUserError(error))
+          .not.put.actionType(USER_LOGIN_SUCCESS)
+          .run();
       });
     });
   });

@@ -1,38 +1,40 @@
 // @flow
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { expectSaga } from 'redux-saga-test-plan';
+import { call, takeEvery } from 'redux-saga/effects';
+import { throwError } from 'redux-saga-test-plan/providers';
 import { makeGetRequest } from 'services/networking/request';
 import fetchUserSaga, { fetchUser } from '../sagas';
-import { fetchUserRequest, fetchUserSuccess, fetchUserError } from '../actions';
-import { USER_FETCH_REQUEST } from '../constant';
+import { fetchUserSuccess, fetchUserError } from '../actions';
+import { USER_FETCH_REQUEST, USER_FETCH_SUCCESS } from '../constant';
+
+const fetchUserRequest = {
+  type: USER_FETCH_REQUEST,
+  payload: { username: 'tcheymol' },
+};
+
+const endpoint = '/users/tcheymol';
+const githubUser = { avatar_url: 'https://google.com' };
+const outputMock = { body: githubUser };
 
 describe('[Saga] Avatar redux', () => {
   describe('fetchUser', () => {
     describe('when request is a success', () => {
-      const action = fetchUserRequest('juste_leblanc');
-      const gen = fetchUser(action);
-
-      it('should call the github api', () => {
-        const endpoint = '/users/juste_leblanc';
-        expect(gen.next().value).toEqual(call(makeGetRequest, endpoint));
-      });
-
-      it('should call the success action when request is a success', () => {
-        const githubUser = { avatar_url: 'https://google.com' };
-        const outputMock = { body: githubUser };
-        expect(gen.next(outputMock).value).toEqual(put(fetchUserSuccess(githubUser)));
+      it('should call the success action when request is a success', async () => {
+        return expectSaga(fetchUser, fetchUserRequest)
+          .provide([[call(makeGetRequest, endpoint), outputMock]])
+          .put(fetchUserSuccess(githubUser))
+          .run();
       });
     });
 
     describe('when request fails', () => {
-      const action = fetchUserRequest('juste_leblanc');
-      const gen = fetchUser(action);
-
-      it('should call the error action', () => {
-        const endpoint = '/users/juste_leblanc';
-        expect(gen.next().value).toEqual(call(makeGetRequest, endpoint));
-        expect(gen.throw({ message: 'error' }).value).toEqual(
-          put(fetchUserError({ message: 'error' })),
-        );
+      it('should call the error action', async () => {
+        const error = new Error();
+        return expectSaga(fetchUser, fetchUserRequest)
+          .provide([[call(makeGetRequest, endpoint), throwError(error)]])
+          .put(fetchUserError(error))
+          .not.put.actionType(USER_FETCH_SUCCESS)
+          .run();
       });
     });
   });
