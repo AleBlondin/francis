@@ -2,6 +2,19 @@
   "name": "francis",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "analyze": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build --analyze-bundle",
+    "test:coverage": "npm run test -- --coverage",
+    "flow": "flow",
+    "flow:coverage": "flow-coverage-report --config=.flowcoverageconfig",
+    "generate": "plop --plopfile scripts/generators/index.js",
+    "lint": "eslint --ext .jsx,.js -c .eslintrc src",
+    "lint:fix": "eslint --fix --ext .jsx,.js -c .eslintrc src"
+  },
   "dependencies": {
     "@material-ui/core": "3.5.1",
     "babel-polyfill": "6.26.0",
@@ -23,18 +36,31 @@
     "styled-components": "4.1.1",
     "superagent": "4.0.0"
   },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
-    "analyze": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build --analyze-bundle",
-    "test:coverage": "npm run test -- --coverage",
-    "flow": "flow",
-    "flow:coverage": "flow-coverage-report --config=.flowcoverageconfig",
-    "generate": "plop --plopfile scripts/generators/index.js",
-    "lint": "eslint --ext .jsx,.js -c .eslintrc src",
-    "lint:fix": "eslint --fix --ext .jsx,.js -c .eslintrc src"
+  "devDependencies": {
+    "babel-plugin-styled-components": "1.8.0",
+    "bundlesize": "0.17.0",
+    "cypress": "3.1.0",
+    "enzyme": "3.7.0",
+    "enzyme-adapter-react-16": "1.7.0",
+    "enzyme-to-json": "3.3.4",
+    "eslint-config-prettier": "3.3.0",
+    "eslint-plugin-flowtype": "3.2.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "22.0.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-mysticatea": "4.2.4",
+    "eslint-plugin-prefer-object-spread": "1.2.1",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "flow-bin": "0.86.0",
+    "flow-coverage-report": "0.6.0",
+    "flow-typed": "2.5.1",
+    "plop": "2.1.0",
+    "prettier": "1.15.1",
+    "react-app-rewire-webpack-bundle-analyzer": "1.0.1",
+    "react-app-rewired": "1.6.2",
+    "react-test-renderer": "16.6.3",
+    "redux-saga-test-plan": "3.7.0"
   },
   "browserslist": [
     ">0.2%",
@@ -71,30 +97,5 @@
       "path": "./build/static/js/*.js",
       "maxSize": "200 kB"
     }
-  ],
-  "devDependencies": {
-    "babel-plugin-styled-components": "1.8.0",
-    "bundlesize": "0.17.0",
-    "enzyme": "3.7.0",
-    "enzyme-adapter-react-16": "1.7.0",
-    "enzyme-to-json": "3.3.4",
-    "eslint-config-prettier": "3.3.0",
-    "eslint-plugin-flowtype": "3.2.0",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jest": "22.0.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-mysticatea": "4.2.4",
-    "eslint-plugin-prefer-object-spread": "1.2.1",
-    "eslint-plugin-prettier": "3.0.0",
-    "eslint-plugin-react": "7.11.1",
-    "flow-bin": "0.86.0",
-    "flow-coverage-report": "0.6.0",
-    "flow-typed": "2.5.1",
-    "plop": "2.1.0",
-    "prettier": "1.15.1",
-    "react-app-rewire-webpack-bundle-analyzer": "1.0.1",
-    "react-app-rewired": "1.6.2",
-    "react-test-renderer": "16.6.3",
-    "redux-saga-test-plan": "3.7.0"
-  }
+  ]
 }
