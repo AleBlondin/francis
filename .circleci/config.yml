@@ -70,6 +70,34 @@ jobs:
       - store_artifacts:
           path: client/coverage
 
+  e2e-tests:
+    docker:
+    # the Docker image with Cypress dependencies
+    - image: cypress/base:8
+      environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: ~/app
+    steps:
+    - checkout
+    - restore_cache: # special step to restore the dependency cache
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
+    - run:
+          working_directory: client
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+    - save_cache: # special step to save the dependency cache
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
+          paths:
+          - ./client/node_modules
+          - ~/.npm
+          - ~/.cache
+    - run:
+          working_directory: client
+          command: $(yarn bin)/cypress run
+    - store_artifacts:
+          path: client/cypress/videos
+          
   composer-install:
     <<: *defaults-backend
     working_directory: ~/repo
@@ -146,6 +174,7 @@ workflows:
       - frontend-bundlesize:
           requires:
             - npm-install
+      - e2e-tests
   backend:
     jobs:
       - composer-install
