@@ -87,7 +87,7 @@
     "prettier": "1.14.3",
     "react-app-rewired": "1.6.2",
     "react-test-renderer": "16.5.2",
-    "redux-saga-test-plan": "^3.7.0",
+    "redux-saga-test-plan": "3.7.0",
     "source-map-explorer": "1.6.0"
   }
 }
