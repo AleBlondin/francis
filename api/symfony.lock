@@ -77,6 +77,9 @@
     "easyrdf/easyrdf": {
         "version": "0.9.1"
     },
+    "facebook/webdriver": {
+        "version": "1.6.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -137,6 +140,9 @@
     "nikic/php-parser": {
         "version": "v4.1.0"
     },
+    "ocramius/package-versions": {
+        "version": "1.3.0"
+    },
     "php-cs-fixer/diff": {
         "version": "v1.2.0"
     },
@@ -173,6 +179,9 @@
     "symfony/asset": {
         "version": "v4.0.3"
     },
+    "symfony/browser-kit": {
+        "version": "v4.1.6"
+    },
     "symfony/cache": {
         "version": "v4.0.3"
     },
@@ -188,6 +197,9 @@
             "ref": "9f94d3ea453cd8a3b95db7f82592d7344fe3a76a"
         }
     },
+    "symfony/css-selector": {
+        "version": "v4.1.6"
+    },
     "symfony/debug": {
         "version": "v4.0.3"
     },
@@ -196,6 +208,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v4.0.3"
+    },
+    "symfony/dom-crawler": {
+        "version": "v4.1.6"
     },
     "symfony/dotenv": {
         "version": "v4.1.6"
@@ -245,6 +260,18 @@
     "symfony/options-resolver": {
         "version": "v4.0.3"
     },
+    "symfony/panther": {
+        "version": "v0.2.0"
+    },
+    "symfony/phpunit-bridge": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "b14c7f62fabeedf256d3211b0f704402b5530ba1"
+        }
+    },
     "symfony/polyfill-ctype": {
         "version": "v1.8.0"
     },
@@ -292,6 +319,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.0.3"
+    },
+    "symfony/test-pack": {
+        "version": "v1.0.4"
     },
     "symfony/translation": {
         "version": "3.3",

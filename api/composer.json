@@ -15,7 +15,8 @@
     "require-dev": {
         "api-platform/schema-generator": "2.1.0",
         "phpstan/phpstan": "0.10.5",
-        "symfony/profiler-pack": "1.0.3"
+        "symfony/profiler-pack": "1.0.3",
+        "symfony/test-pack": "^1.0"
     },
     "config": {
         "preferred-install": {
