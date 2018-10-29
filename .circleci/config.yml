@@ -96,10 +96,20 @@ jobs:
             at: ~/repo/api
       - restore_cache:
             key: composer-cache-{{ checksum "api/composer.lock" }}
+      - restore_cache:
+            key: phpunit-cache-{{ checksum "api/composer.lock" }}
       - run:
             working_directory: api
             name: Run functional tests
             command: bin/phpunit --testsuite Functional tests
+      - save_cache:
+          key: phpunit-cache-{{ checksum "api/composer.lock" }}
+          paths:
+          - api/bin/.phpunit
+      - persist_to_workspace:
+          root: ~/repo/api
+          paths:
+          - bin/.phpunit
 
 workflows:
   version: 2
