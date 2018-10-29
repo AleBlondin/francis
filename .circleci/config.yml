@@ -87,6 +87,20 @@ jobs:
             name: Run static analysis
             command: ./vendor/bin/phpstan analyse src
 
+  backend-functional-tests:
+      <<: *defaults-backend
+      working_directory: ~/repo
+      steps:
+      - checkout
+      - attach_workspace:
+            at: ~/repo/api
+      - restore_cache:
+            key: composer-cache-{{ checksum "api/composer.lock" }}
+      - run:
+            working_directory: api
+            name: Run functional tests
+            command: bin/phpunit --testsuite Functional tests
+
 workflows:
   version: 2
   frontend:
@@ -99,5 +113,8 @@ workflows:
     jobs:
       - composer-install
       - backend-static-tests:
+          requires:
+            - composer-install
+      - backend-functional-tests:
           requires:
             - composer-install
