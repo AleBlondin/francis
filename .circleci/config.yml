@@ -5,6 +5,14 @@ defaults-frontend: &defaults-frontend
 defaults-backend: &defaults-backend
     docker:
     - image: chialab/php:7.2
+    - image: circleci/postgres:9.6-alpine-ram
+      environment:
+      - POSTGRES_DB=api
+      - POSTGRES_USER=api-platform
+      # You should definitely change the password in production
+      - POSTGRES_PASSWORD=!ChangeMe!
+      volumes:
+      - db-data:/var/lib/postgresql/data:rw
 
 version: 2
 jobs:

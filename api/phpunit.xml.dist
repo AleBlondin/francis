@@ -10,6 +10,7 @@
         <env name="KERNEL_CLASS" value="App\Kernel" />
         <env name="APP_ENV" value="test" force="true" />
         <env name="APP_DEBUG" value="0" />
+        <env name="DATABASE_URL" value="postgres://api-platform:!ChangeMe!@127.0.0.1/api" />
         <env name="CORS_ALLOW_ORIGIN" value="^https?://localhost(:[0-9]+)?$" />
     </php>
     <testsuites>
@@ -23,4 +24,7 @@
             <directory>src</directory>
         </whitelist>
     </filter>
+    <listeners>
+        <listener class="\DAMA\DoctrineTestBundle\PHPUnit\PHPUnitListener" />
+    </listeners>
 </phpunit>
