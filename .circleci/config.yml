@@ -24,13 +24,13 @@ jobs:
       - attach_workspace:
           at: ~/project/client
       - restore_cache:
-          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
       - run:
           working_directory: client
           name: Install front dependencies
           command: npm install
       - save_cache:
-          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
           paths:
             - client/node_modules
       - persist_to_workspace:
