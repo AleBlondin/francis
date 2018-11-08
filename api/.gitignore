@@ -13,6 +13,10 @@
 .php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
 
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
 ###> symfony/phpunit-bridge ###
 .phpunit
 /phpunit.xml
