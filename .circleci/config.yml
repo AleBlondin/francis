@@ -133,6 +133,6 @@ workflows:
       - backend-static-tests:
           requires:
             - composer-install
-#      - backend-functional-tests:
-#          requires:
-#            - composer-install
+      - backend-functional-tests:
+          requires:
+            - composer-install
