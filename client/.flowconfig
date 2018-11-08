@@ -15,4 +15,4 @@ src/redux/Avatar/types.js
 module.name_mapper='^\(\/?.*\)$' -> '<PROJECT_ROOT>/src/\1'
 
 [version]
-0.82.0
+0.83.0
