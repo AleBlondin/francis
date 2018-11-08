@@ -1,10 +1,18 @@
 defaults-frontend: &defaults-frontend
   docker:
-  - image: circleci/node:10.12.0
+  - image: circleci/node:10.13.0
 
 defaults-backend: &defaults-backend
     docker:
     - image: chialab/php:7.2
+    - image: circleci/postgres:9.6-alpine-ram
+      environment:
+      - POSTGRES_DB=api
+      - POSTGRES_USER=api-platform
+      # You should definitely change the password in production
+      - POSTGRES_PASSWORD=!ChangeMe!
+      volumes:
+      - db-data:/var/lib/postgresql/data:rw
 
 version: 2
 jobs:
@@ -16,13 +24,13 @@ jobs:
       - attach_workspace:
           at: ~/project/client
       - restore_cache:
-          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
       - run:
           working_directory: client
           name: Install front dependencies
           command: npm install
       - save_cache:
-          key: node-modules-cache-{{ checksum "client/package-lock.json" }}
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
           paths:
             - client/node_modules
       - persist_to_workspace:
@@ -87,6 +95,30 @@ jobs:
             name: Run static analysis
             command: ./vendor/bin/phpstan analyse src
 
+  backend-functional-tests:
+      <<: *defaults-backend
+      working_directory: ~/repo
+      steps:
+      - checkout
+      - attach_workspace:
+            at: ~/repo/api
+      - restore_cache:
+            key: composer-cache-{{ checksum "api/composer.lock" }}
+      - restore_cache:
+            key: phpunit-cache-{{ checksum "api/composer.lock" }}
+      - run:
+            working_directory: api
+            name: Run functional tests
+            command: bin/phpunit --testsuite Functional tests
+      - save_cache:
+          key: phpunit-cache-{{ checksum "api/composer.lock" }}
+          paths:
+          - api/bin/.phpunit
+      - persist_to_workspace:
+          root: ~/repo/api
+          paths:
+          - bin/.phpunit
+
 workflows:
   version: 2
   frontend:
@@ -99,5 +131,8 @@ workflows:
     jobs:
       - composer-install
       - backend-static-tests:
+          requires:
+            - composer-install
+      - backend-functional-tests:
           requires:
             - composer-install
