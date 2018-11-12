@@ -25,7 +25,7 @@ export default function configureStore(history) {
       : compose;
   /* eslint-enable */
 
-  const rootReducer = createReducer();
+  const rootReducer = createReducer({ router: connectRouter(history) });
   const persistConfig = {
     key: 'root',
     whitelist: ['login'],
