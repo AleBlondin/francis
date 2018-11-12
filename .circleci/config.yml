@@ -53,7 +53,23 @@ jobs:
           command: npm run test:coverage
       - store_artifacts:
           path: client/coverage
-          
+
+  frontend-bundlesize:
+    <<: *defaults-frontend
+    working_directory: ~/project
+    environment:
+      NODE_ENV: prod
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project/client
+      - run:
+          working_directory: client
+          name: Check bundle size
+          command: npm run build && ./node_modules/.bin/bundlesize
+      - store_artifacts:
+          path: client/coverage
+
   composer-install:
     <<: *defaults-backend
     working_directory: ~/repo
@@ -125,6 +141,9 @@ workflows:
     jobs:
       - npm-install
       - frontend-tests:
+          requires:
+            - npm-install
+      - frontend-bundlesize:
           requires:
             - npm-install
   backend:

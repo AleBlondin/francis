@@ -66,8 +66,15 @@
       }
     }
   },
+  "bundlesize": [
+    {
+      "path": "./build/static/js/*.js",
+      "maxSize": "200 kB"
+    }
+  ],
   "devDependencies": {
     "babel-plugin-styled-components": "1.8.0",
+    "bundlesize": "^0.17.0",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.7.0",
     "enzyme-to-json": "3.3.4",
