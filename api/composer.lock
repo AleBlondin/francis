@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1423c100d537ee1c6513ee90a352559f",
+    "content-hash": "45e1668d2fb71b024d4c747047f0871e",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -1610,7 +1610,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
