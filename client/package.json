@@ -74,7 +74,7 @@
   ],
   "devDependencies": {
     "babel-plugin-styled-components": "1.8.0",
-    "bundlesize": "^0.17.0",
+    "bundlesize": "0.17.0",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.7.0",
     "enzyme-to-json": "3.3.4",
@@ -92,7 +92,7 @@
     "flow-typed": "2.5.1",
     "plop": "2.1.0",
     "prettier": "1.15.1",
-    "react-app-rewire-webpack-bundle-analyzer": "^1.0.1",
+    "react-app-rewire-webpack-bundle-analyzer": "1.0.1",
     "react-app-rewired": "1.6.2",
     "react-test-renderer": "16.6.1",
     "redux-saga-test-plan": "3.7.0"
