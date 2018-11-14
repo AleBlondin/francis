@@ -143,7 +143,7 @@ declare module "react-redux" {
     >(
     mapStateToProps: MapStateToProps<S, SP, RSP>,
     mapDispatchToProps: MapDispatchToProps<A, DP, RDP>
-  ): (component: Com) => ComponentType<CP & SP & DP> & $Shape<ST>;
+  ): (component: Com) => ComponentType<* & * & *> & $Shape<ST>;
 
   declare export function connect<
     Com: ComponentType<*>,
