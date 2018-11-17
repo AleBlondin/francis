@@ -33,6 +33,7 @@
         "symfony/test-pack": "1.0.4"
     },
     "config": {
+        "bin-dir": "bin",
         "preferred-install": {
             "*": "dist"
         },
