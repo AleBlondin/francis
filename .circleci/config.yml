@@ -92,7 +92,7 @@ jobs:
           paths:
           - vendor
 
-  backend-static-tests:
+  backend-static-analysis:
       <<: *defaults-backend
       working_directory: ~/repo
       steps:
@@ -144,7 +144,7 @@ workflows:
   backend:
     jobs:
       - composer-install
-      - backend-static-tests:
+      - backend-static-analysis:
           requires:
             - composer-install
       - backend-functional-tests:
