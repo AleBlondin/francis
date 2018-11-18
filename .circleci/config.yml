@@ -81,10 +81,6 @@ jobs:
           key: composer-cache-{{ checksum "api/composer.lock" }}
     - run:
           working_directory: api
-          name: Copy env file
-          command: cp .env.dist .env
-    - run:
-          working_directory: api
           name: Install composer dependencies
           command: composer install -n --prefer-dist
     - save_cache:
@@ -95,7 +91,6 @@ jobs:
           root: ~/repo/api
           paths:
           - vendor
-          - .env
 
   backend-static-tests:
       <<: *defaults-backend
