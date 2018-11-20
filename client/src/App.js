@@ -10,7 +10,7 @@ import type { BrowserHistory } from 'history/createBrowserHistory';
 
 import theme from 'theme';
 import Routes from './routes';
-import { Root } from './components';
+import Root from './components/Root';
 
 type Props = {
   history: BrowserHistory,
