@@ -17,7 +17,7 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "2.1.0",
-        "doctrine/doctrine-fixtures-bundle": "3.0.2",
+        "doctrine/doctrine-fixtures-bundle": "3.0.4",
         "fzaninotto/faker": "1.8.0",
         "dama/doctrine-test-bundle": "5.0.1",
         "phpstan/phpstan": "0.10.5",
