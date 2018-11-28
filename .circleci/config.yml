@@ -29,6 +29,10 @@ jobs:
           working_directory: client
           name: Install front dependencies
           command: npm install
+      - run:
+          working_directory: client
+          name: Install bundle size
+          command: npm install bundlesize --save-dev
       - save_cache:
           key: node-modules-cache-{{ checksum "client/yarn.lock" }}
           paths:
@@ -63,10 +67,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project/client
-      - run:
-          working_directory: client
-          name: Install bundle size
-          command: npm install bundlesize
       - run:
           working_directory: client
           name: Check bundle size
