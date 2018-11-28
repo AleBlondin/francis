@@ -65,6 +65,10 @@ jobs:
           at: ~/project/client
       - run:
           working_directory: client
+          name: Install bundle size
+          command: npm install bundlesize
+      - run:
+          working_directory: client
           name: Check bundle size
           command: npm run build && ./node_modules/.bin/bundlesize
       - store_artifacts:
