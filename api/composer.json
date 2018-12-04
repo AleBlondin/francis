@@ -20,7 +20,7 @@
         "doctrine/doctrine-fixtures-bundle": "3.0.2",
         "fzaninotto/faker": "1.8.0",
         "dama/doctrine-test-bundle": "5.0.1",
-        "phpstan/phpstan": "0.10.5",
+        "phpstan/phpstan": "0.10.6",
         "symfony/profiler-pack": "1.0.3",
         "symfony/test-pack": "1.0.4"
     },
