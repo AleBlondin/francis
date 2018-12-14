@@ -89,7 +89,7 @@
     "flow-bin": "0.86.0",
     "flow-coverage-report": "0.6.0",
     "flow-typed": "2.5.1",
-    "plop": "2.1.0",
+    "plop": "2.2.0",
     "prettier": "1.15.1",
     "react-app-rewire-webpack-bundle-analyzer": "1.0.1",
     "react-app-rewired": "1.6.2",
